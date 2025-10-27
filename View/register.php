@@ -1,7 +1,6 @@
 <?php
 include '../Controller/RegisterController.php';
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
