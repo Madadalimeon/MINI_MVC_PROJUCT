@@ -99,12 +99,11 @@ include('../Model/connection.php');
           <div class="d-flex align-items-center mb-3">
             <label class="me-3"><strong>Quantity:</strong></label>
             <div class="quantity-box">
-              <button class="quantity-btn" onclick="changeQuantity(-1, <?php echo $row['Products_price']; ?>, <?php echo $row['Products_id']; ?>)">−</button>
+              <button class="quantity-btn" onclick="changeQuantity(-1, <?php echo $row['Products_price']; ?>, <?php echo $row['Products_id']; ?>)">-</button>
               <span id="quantity-<?php echo $row['Products_id']; ?>" class="quantity-value">1</span>
               <button class="quantity-btn" onclick="changeQuantity(1, <?php echo $row['Products_price']; ?>, <?php echo $row['Products_id']; ?>)">+</button>
             </div>
           </div>
-
           <form method="post">
             <input type="hidden" name="product_id" value="<?php echo $row['Products_id']; ?>">
             <input type="hidden" name="product_name" value="<?php echo $row['Products_name']; ?>">
