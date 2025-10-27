@@ -93,7 +93,7 @@ include('../Model/connection.php');
             <?php echo $row['Products_Stock'] > 0 ? "In stock" : "Out of stock"; ?>
           </p>
           <h5 class="mt-3">
-            <span class="price">Rs.<?php echo $row['Products_price']; ?></span>
+            <span class="price">$.<?php echo $row['Products_price']; ?></span>
           </h5>
           <p class="mt-4"><strong>Subtotal:</strong> Rs.<span id="subtotal-<?php echo $row['Products_id']; ?>"><?php echo $subtotal; ?></span></p>
           <div class="d-flex align-items-center mb-3">
@@ -116,7 +116,7 @@ include('../Model/connection.php');
         </div>
     <?php
       } else {
-        echo "<p>Product not found.</p>";
+        echo "<p>Product not found.</p>"; 
       }
     } else {
       echo "<p>No product selected.</p>";
@@ -134,7 +134,7 @@ include('../Model/connection.php');
     quantityElement.innerText = quantity;
     hiddenInput.value = quantity; 
     let subtotal = price * quantity;
-    subtotalElement.innerText = subtotal.toFixed(2);
+    subtotalElement.innerText = subtotal;
   }
 </script>
 
@@ -148,7 +148,7 @@ if (isset($_POST['buy_now'])) {
   if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
   }
-  $found = false;
+  $found = false; 
   foreach ($_SESSION['cart'] as $item) {
     if ($item['id'] == $product_id) {
       $item['quantity'] += $quantity;
@@ -172,7 +172,7 @@ if (isset($_POST['buy_now'])) {
             icon: 'success',
             title: 'Added to Cart!',
             text: 'Product added successfully.',
-            confirmButtonColor: '#111'
+            confirmButtonColor: '#000000ff'
           }).then(() => {
             window.location.href = 'cart.php';
           });
