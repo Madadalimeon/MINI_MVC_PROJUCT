@@ -141,7 +141,7 @@ include ("./../Model/connection.php");
               <div class="swiper-slide">
                 <div class="product-card position-relative">
                   <div class="image-holder">
-                    <img style="height: 350px;" src="images/<?php echo $row['Products_img']; ?>" alt="<?php echo $row['Products_name']; ?>" class="img-fluid">
+                    <img style="height: 390px;" src="images/<?php echo $row['Products_img']; ?>" alt="<?php echo $row['Products_name']; ?>" class="img-fluid">
                   </div>
                   <div class="cart-concern position-absolute">
                     <div class="cart-button d-flex">

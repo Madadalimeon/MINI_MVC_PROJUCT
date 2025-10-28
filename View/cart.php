@@ -20,7 +20,7 @@ if (isset($_POST['increase'])) {
     if ($item['id'] == $product_id) {
       $item['quantity']++;
       break;
-    }
+    }  
 }
   setcookie("cart_cookie", json_encode($_SESSION['cart']), time() + (7 * 24 * 60 * 60), "/");
   header("Location: ../View/cart.php");
@@ -136,9 +136,7 @@ if (isset($_POST['decrease'])) {
                 <h6>Total</h6>
                 <h6 class="text-success"><strong>Rs.<?php echo number_format($total, 2); ?></strong></h6>
               </div>
-              <button class="btn btn-success w-100">
-                <i class="fa fa-credit-card"></i> Proceed to Checkout
-              </button>
+              <a href="Proceed_add_card.php"><button class="btn btn-success w-100"><i class="fa fa-credit-card"></i> Proceed to Checkout</button></a>
             <?php else: ?>
               <p class="text-muted">Add an item to view order summary.</p>
             <?php endif; ?>
