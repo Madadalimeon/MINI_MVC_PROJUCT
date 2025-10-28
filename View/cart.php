@@ -12,6 +12,7 @@ if (isset($_POST['remove'])) {
     }
   }
   setcookie("cart_cookie", json_encode($_SESSION['cart']), time() + (7 * 24 * 60 * 60), "/");
+   echo '<script>window.location.href = window.location.href;</script>';
   exit;
 }
 if (isset($_POST['increase'])) {
