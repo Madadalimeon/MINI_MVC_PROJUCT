@@ -7,14 +7,14 @@ class Product {
         $database = new Database();
         $this->conn = $database->getDB();
     }
-    public function addProduct($name, $price, $stock, $image) {
-        $query = "INSERT INTO " . $this->table . " (Products_name, Products_img, Products_price, Products_Stock) VALUES (?, ?, ?, ?)";
+    public function addProduct($name, $price, $stock, $image,$Products_add_time) {
+        $query = "INSERT INTO " . $this->table . " (Products_name, Products_img, Products_price, Products_Stock,Products_add_time) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssdi", $name, $image, $price, $stock);
+        $stmt->bind_param("ssdis", $name, $image, $price, $stock,$Products_add_time);
         return $stmt->execute();
     }
     public function updateProduct($id, $name, $price, $stock, $image) {
-        $query = "UPDATE " . $this->table . " SET Products_name=?, Products_img=?, Products_price=?, Products_Stock=? WHERE Products_id=?";
+        $query = "UPDATE " . $this->table . " SET Products_name=?, Products_img=?, Products_price=?, Products_Stock=? Products_add_time=? WHERE Products_id=?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("ssdii", $name, $image, $price, $stock, $id);
         return $stmt->execute();
@@ -22,7 +22,7 @@ class Product {
     public function getAllProducts() {
         $query = "SELECT * FROM " . $this->table;
         $result = $this->conn->query($query);
-        return $result->fetch_assoc();
+        return $result->fetch_all();
     }
     public function deleteProduct($id) {
         $query = "DELETE FROM " . $this->table . " WHERE Products_id = ?";

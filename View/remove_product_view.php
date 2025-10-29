@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_stock'])) {
 }
 
 $products = $controller->getProducts();
+
 ?>
 
 <!DOCTYPE html>
@@ -71,19 +72,16 @@ $products = $controller->getProducts();
       </tr>
     </thead>
     <tbody>
-
-      <?php
-       foreach($products as $key => $p): 
-       ?>
-       
+      <?php foreach($products as $p): 
+        ?>
         <tr>
-          <td><?=  $p['Products_id'] ?></td>
-          <td><img src="../uploads/<?= $p['Products_img'] ?>" width="70" height="70" style="object-fit:contain;"></td>
-          <td><?= $p['Products_name'] ?></td>
-          <td>Rs. <?= $p['Products_price'] ?></td>
-          <td><?= $p['Products_Stock'] ?></td>
-          <td>
+          <td><?php echo  $p['Products_id'];?></td>
 
+          <td><img src="../uploads/<?php $p['Products_img'] ?>" width="70" height="70" style="object-fit:contain;"></td>
+          <td><?php $p['Products_name'] ?></td>
+          <td>Rs. <?php $p['Products_price'] ?></td>
+          <td><?php $p['Products_Stock'] ?></td>
+          <td>
             <form method="POST" style="display:inline-block;">
               <input type="hidden" name="product_id" value="<?= $p['Products_id'] ?>">
               <input type="hidden" name="product_name" value="<?= $p['Products_name'] ?>">

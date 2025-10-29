@@ -5,12 +5,12 @@ class ProductController {
     public function __construct() {
         $this->productModel = new Product();
     }
-    public function addProduct($name, $price, $stock, $imageFile) {
+    public function addProduct($name, $price, $stock, $imageFile,$Products_add_time) {
         $targetDir = "../uploads/";
         $targetFile = $targetDir . basename($imageFile['name']);
         move_uploaded_file($imageFile["tmp_name"], $targetFile);
         $imageName = basename($imageFile['name']);
-        return $this->productModel->addProduct($name, $price, $stock, $imageName);
+        return $this->productModel->addProduct($name, $price, $stock, $imageName,$Products_add_time);
     }
     public function deleteProduct($id) {
         return $this->productModel->deleteProduct($id);
