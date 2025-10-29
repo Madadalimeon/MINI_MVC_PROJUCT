@@ -8,7 +8,7 @@ class LoginUser {
         $this->conn = $database->getDB();
     }
     public function login($username, $password) {
-        $query = "SELECT username, password FROM " . $this->db_table_name . " WHERE username = ?";
+        $query = "SELECT username, password FROM " . $this->db_table_name . " WHERE username = ?";        
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("s", $username);
         $stmt->execute();

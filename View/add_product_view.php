@@ -31,8 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
   </div>
 </nav>
-
-
 <div class="container mt-5">
   <div class="card shadow p-4">
     <h3 class="text-center text-success mb-4">Add New Product</h3>
