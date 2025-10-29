@@ -21,7 +21,7 @@ class ProductController {
     }
 
     public function updateProductStock($id, $name, $price, $stock, $image) {
-        $Products_add_time = date('Y-m-d H:i:s');
+        $Products_add_time = date('H:i:s');
         return $this->productModel->updateProduct($id, $name, $price, $stock, $image, $Products_add_time);
     }
 
