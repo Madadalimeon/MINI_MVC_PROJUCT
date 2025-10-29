@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['cart']) && isset($_COOKIE['cart_cookie'])) {
-  $_SESSION['cart'] = json_decode($_COOKIE['cart_cookie']);
+  $_SESSION['cart'] = json_decode($_COOKIE['cart_cookie'],true);
 }
 if (isset($_POST['remove'])) {
   $remove_id = $_POST['remove_id'];

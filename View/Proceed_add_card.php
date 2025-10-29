@@ -11,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $Apartment = $_POST["Apartment"];
     $City = $_POST['City'];
     $Postal = $_POST['postal'];
+    echo $Contact ;
+    die;
     $user = new Add_card($First_name, $Last_name, $Address, $Contact, $Delivery, $Apartment, $City, $Postal);
     if ($user->register_Add_card()) {
         echo "<div class='alert alert-success' role='alert'>Card details added successfully!</div>";
