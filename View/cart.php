@@ -126,16 +126,16 @@ if (isset($_POST['decrease'])) {
             ?>
               <div class="d-flex justify-content-between">
                 <p>Subtotal</p>
-                <p><strong>Rs.<?php echo number_format($subtotal, 2); ?></strong></p>
+                <p><strong>$.<?php echo number_format($subtotal, 2); ?></strong></p>
               </div>
               <div class="d-flex justify-content-between">
                 <p>Shipping</p>
-                <p><strong>Rs.<?php echo number_format($shipping, 2); ?></strong></p>
+                <p><strong>$.<?php echo number_format($shipping, 2); ?></strong></p>
               </div>
               <hr>
               <div class="d-flex justify-content-between mb-3">
                 <h6>Total</h6>
-                <h6 class="text-success"><strong>Rs.<?php echo number_format($total, 2); ?></strong></h6>
+                <h6 class="text-success"><strong>$.<?php echo number_format($total, 2); ?></strong></h6>
               </div>
               <a href="Proceed_add_card.php"><button class="btn btn-success w-100"><i class="fa fa-credit-card"></i> Proceed to Checkout</button></a>
             <?php else: ?>

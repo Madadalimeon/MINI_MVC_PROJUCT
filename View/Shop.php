@@ -4,8 +4,10 @@ include("../include/header.php");
 include('../Model/connection.php');
 ?>
 <br><br><br><br><br><br><br>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
   body {
     background-color: #fff;
@@ -160,9 +162,9 @@ if (isset($_POST['buy_now'])) {
   }
 
   $found = false;
-  foreach ($_SESSION['cart'] as &$item) { 
+  foreach ($_SESSION['cart'] as &$item) {
     if ($item['id'] == $product_id) {
-      $item['quantity'] += $quantity; 
+      $item['quantity'] += $quantity;
       $found = true;
       break;
     }
@@ -176,6 +178,8 @@ if (isset($_POST['buy_now'])) {
       'quantity' => $quantity
     ];
   }
+
+
   setcookie("cart_cookie", json_encode($_SESSION['cart']), time() + (7 * 24 * 60 * 60), "/");
   echo "<script>
           Swal.fire({

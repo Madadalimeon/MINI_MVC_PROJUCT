@@ -1,22 +1,13 @@
 <?php
 include '../Controller/ProductController.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $Contact = $_POST['Contact'];
-    $Delivery = $_POST['Delivery'];
-    $First_name = $_POST['First_name'];
-    $Last_name = $_POST['Last_name'];
-    $Address = $_POST["Address"];
-    $Apartment = $_POST["Apartment"];
-    $City = $_POST['City'];
-    $Postal = $_POST['postal'];
-    echo $Contact ;
-    die;
-    $user = new Add_card($First_name, $Last_name, $Address, $Contact, $Delivery, $Apartment, $City, $Postal);
-    if ($user->register_Add_card()) {
-        echo "<div class='alert alert-success' role='alert'>Card details added successfully!</div>";
+    $controller = new ProductController();
+    if ($controller->addProduct($_POST['product_name'], $_POST['product_price'], $_POST['Stock'], $_FILES['product_image'])) {
+        header("Location: add_product_view.php?success=1");
+        exit();
     } else {
-        echo "<div class='alert alert-success' role='alert'>Error adding card details</div>";
+        header("Location: add_product_view.php?error=1");
+        exit();
     }
 }
 ?>
