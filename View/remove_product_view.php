@@ -1,6 +1,7 @@
 <?php
 include '../Controller/ProductController.php';
 $controller = new ProductController();
+
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     if ($controller->deleteProduct($id)) {
@@ -22,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_stock'])) {
 }
 
 $products = $controller->getProducts();
-
 ?>
 
 <!DOCTYPE html>
@@ -36,20 +36,18 @@ $products = $controller->getProducts();
 </head>
 <body class="bg-light">
 
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="#">My Store</a>
     <div class="d-flex">
-      <a href="index.php" class="btn btn-warning btn-sm">index</a>
+      <a href="index.php" class="btn btn-warning btn-sm">Home</a>
     </div>
   </div>
 </nav>
 
-
-
 <div class="container py-5">
   <h2 class="text-center text-success mb-4">Manage & Remove Products</h2>
+
   <?php if(isset($_GET['success'])): ?>
     <div class="alert alert-success text-center">Product removed successfully!</div>
   <?php elseif(isset($_GET['error'])): ?>
@@ -72,22 +70,20 @@ $products = $controller->getProducts();
       </tr>
     </thead>
     <tbody>
-      <?php foreach($products as $p): 
-        ?>
+      <?php foreach($products as $p): ?>
         <tr>
-          <td><?php echo  $p['Products_id'];?></td>
-
-          <td><img src="../uploads/<?php $p['Products_img'] ?>" width="70" height="70" style="object-fit:contain;"></td>
-          <td><?php $p['Products_name'] ?></td>
-          <td>Rs. <?php $p['Products_price'] ?></td>
-          <td><?php $p['Products_Stock'] ?></td>
+          <td><?= $p['Products_id'] ?></td>
+          <td><img src="../uploads/<?= $p['Products_img'] ?>" width="70" height="70" style="object-fit:contain;"></td>
+          <td><?= $p['Products_name'] ?></td>
+          <td>Rs. <?= $p['Products_price'] ?></td>
+          <td><?= $p['Products_Stock'] ?></td>
           <td>
             <form method="POST" style="display:inline-block;">
               <input type="hidden" name="product_id" value="<?= $p['Products_id'] ?>">
-              <input type="hidden" name="product_name" value="<?= $p['Products_name'] ?>">
-              <input type="hidden" name="product_price" value="<?= $p['Products_price'] ?>">
               <input type="hidden" name="product_image" value="<?= $p['Products_img'] ?>">
-              <input type="number" name="new_stock" value="<?= $p['Products_Stock'] ?>" class="form-control form-control-sm mb-1" style="width:80px;display:inline-block;">
+              <input type="text" name="product_name" value="<?= $p['Products_name'] ?>" class="form-control form-control-sm mb-1">
+              <input type="number" name="product_price" value="<?= $p['Products_price'] ?>" class="form-control form-control-sm mb-1">
+              <input type="number" name="new_stock" value="<?= $p['Products_Stock'] ?>" class="form-control form-control-sm mb-1">
               <button type="submit" name="update_stock" class="btn btn-primary btn-sm">Update</button>
             </form>
             <a href="?delete=<?= $p['Products_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
