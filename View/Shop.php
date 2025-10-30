@@ -121,7 +121,7 @@ include('../Model/connection.php');
             <input type="hidden" name="product_price" value="<?php echo $row['Products_price']; ?>">
             <input type="hidden" name="product_image" value="<?php echo $row['Products_img']; ?>">
             <input type="hidden" id="hidden_quantity_<?php echo $row['Products_id']; ?>" name="quantity" value="1">
-            <button type="submit" name="buy_now" class="buy-btn">BUY NOW</button>
+            <button type="submit" name="buy_now" class="buy-btn">Add to Cart</button>
           </form>
         </div>
     <?php

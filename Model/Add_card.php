@@ -1,37 +1,31 @@
 <?php
-include 'connection.php';
-
-class Add_card {
+include "../Model/connection.php";
+class Add_card{
     private $conn;
-    private $db_table_name = "add_card";
-    private $first_name;
-    private $last_name;
-    private $Address;
     private $Contact;
     private $Delivery;
+    private $First_name;
+    private $Last_name;
+    private $Address;
     private $Apartment;
     private $City;
-    private $Postal_code;
-
-    public function __construct($first_name, $last_name, $Address, $Contact, $Delivery, $Apartment, $City, $Postal_code) {
+    private $Postal;
+    function __construct($Contact, $Delivery, $First_name, $Last_name, $Address, $Apartment, $City, $Postal){
         $database = new Database();
         $this->conn = $database->getDB();
-
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
-        $this->Address = $Address;
         $this->Contact = $Contact;
         $this->Delivery = $Delivery;
+        $this->First_name = $First_name;
+        $this->Last_name = $Last_name;
+        $this->Address = $Address;
         $this->Apartment = $Apartment;
         $this->City = $City;
-        $this->Postal_code = $Postal_code;
-    }
-
-    public function register_Add_card() {
-        $query = "INSERT INTO " . $this->db_table_name . " (First_name, Last_name, Address, Contact, Delivery, Apartment, City, Postal_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $this->Postal = $Postal;
+}
+    function Add_card_Proceed(){
+        $query = "INSERT INTO add_card (First_name, Last_name, Address, Contact, Delivery, Apartment, City, Postal_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssssssss", $this->first_name, $this->last_name, $this->Address, $this->Contact, $this->Delivery, $this->Apartment, $this->City, $this->Postal_code);
+        $stmt->bind_param("sssssssi", $this->First_name, $this->Last_name, $this->Address, $this->Contact, $this->Delivery, $this->Apartment, $this->City, $this->Postal);
         return $stmt->execute();
     }
 }
-?>

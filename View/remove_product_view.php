@@ -61,8 +61,8 @@ $products = $controller->getProducts();
   <table class="table table-bordered text-center align-middle bg-white shadow">
     <thead class="table-success">
       <tr>
-        <th>ID</th>
         <th>Image</th>
+        <th>ID</th>
         <th>Name</th>
         <th>Price</th>
         <th>Stock</th>
@@ -72,18 +72,16 @@ $products = $controller->getProducts();
     <tbody>
       <?php foreach($products as $p): ?>
         <tr>
-          <td><?= $p['Products_id'] ?></td>
           <td><img src="../uploads/<?= $p['Products_img'] ?>" width="70" height="70" style="object-fit:contain;"></td>
-          <td><?= $p['Products_name'] ?></td>
-          <td>Rs. <?= $p['Products_price'] ?></td>
-          <td><?= $p['Products_Stock'] ?></td>
+          <form method="POST" style="display:inline-block;">
+          <td><?= $p['Products_id'] ?></td>
+          <td><input type="text" name="product_name" value="<?= $p['Products_name'] ?>" class="form-control form-control-sm mb-1"></td>
+          <td> <input type="number" name="product_price" value="<?= $p['Products_price'] ?>" class="form-control form-control-sm mb-1"></td>
+          <td>  <input type="number" name="new_stock" value="<?= $p['Products_Stock'] ?>" class="form-control form-control-sm mb-1"></td>
           <td>
-            <form method="POST" style="display:inline-block;">
               <input type="hidden" name="product_id" value="<?= $p['Products_id'] ?>">
               <input type="hidden" name="product_image" value="<?= $p['Products_img'] ?>">
-              <input type="text" name="product_name" value="<?= $p['Products_name'] ?>" class="form-control form-control-sm mb-1">
-              <input type="number" name="product_price" value="<?= $p['Products_price'] ?>" class="form-control form-control-sm mb-1">
-              <input type="number" name="new_stock" value="<?= $p['Products_Stock'] ?>" class="form-control form-control-sm mb-1">
+           
               <button type="submit" name="update_stock" class="btn btn-primary btn-sm">Update</button>
             </form>
             <a href="?delete=<?= $p['Products_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
